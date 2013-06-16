@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<link href="<c:url value="/css/bootstrap.min.css"/>" rel="stylesheet"
+	type="text/css" media="all" />
+<link href="<c:url value="/css/bootstrap-responsive.min.css"/>"
+	rel="stylesheet" type="text/css" media="all" />
+
+<!-- jQuery UI -->
+<link rel="stylesheet"
+	href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+<link rel="stylesheet" href="/resources/demos/style.css" />
+
+<style>
+.ui-autocomplete-loading {
+	background: white url('images/ui-anim_basic_16x16.gif') right center
+		no-repeat;
+}
+
+#city {
+	width: 25em;
+}
+</style>
+
+
+<!-- dataTables -->
+<link rel="stylesheet"
+	href="<c:url value="/css/plugins/datatable/TableTools.css"/>" />
+<!-- chosen -->
+<link rel="stylesheet"
+	href="<c:url value="/css/plugins/chosen/chosen.css"/>" />
+<!-- Theme CSS -->
+<link rel="stylesheet" href="<c:url value="/css/style.css"/>" />
+<!-- Color CSS -->
+<link rel="stylesheet" href="<c:url value="/css/themes.css"/>" />
+
+
+<script type="text/javascript"
+	src="<c:url value="/js/bootstrap.min.js"/>"></script>
+
+<!-- Nice Scroll -->
+<script
+	src="<c:url value="/js/plugins/nicescroll/jquery.nicescroll.min.js"/>"></script>
+<!-- imagesLoaded -->
+<script
+	src="<c:url value="/js/plugins/imagesLoaded/jquery.imagesloaded.min.js"/>"></script>
+<!-- slimScroll -->
+<script
+	src="<c:url value="/js/plugins/slimscroll/jquery.slimscroll.min.js"/>"></script>
+<!-- Bootstrap -->
+<script src="<c:url value="/js/bootstrap.min.js"/>"></script>
+<!-- Bootbox -->
+<script src="<c:url value="/js/plugins/bootbox/jquery.bootbox.js"/>"></script>
+<!-- dataTables -->
+<script
+	src="<c:url value="/js/plugins/datatable/jquery.dataTables.min.js"/>"></script>
+<script src="<c:url value="/js/plugins/datatable/TableTools.min.js"/>"></script>
+<script src="<c:url value="/js/plugins/datatable/ColReorder.min.js"/>"></script>
+<script src="<c:url value="/js/plugins/datatable/ColVis.min.js"/>"></script>
+<script
+	src="<c:url value="/js/plugins/datatable/jquery.dataTables.columnFilter.js"/>"></script>
+<!-- Chosen -->
+<script src="<c:url value="/js/plugins/chosen/chosen.jquery.min.js"/>"></script>
+
+<script type="text/javascript" charset="utf-8">
+		$(document).ready(function() {
+		
+				$('#produto').dataTable({
+									"bServerSide" : true,
+									"sAjaxSource" : "/copytem/produto/search",
+									"bProcessing" : true,
+									"sPaginationType" : "full_numbers",
+									"bInfo": false,
+									
+									"bRetrieve": false,
+						            
+									"sDom": '<"top"if>rt<"bottom"p><"clear">',
+									
+									"aoColumns" : [ 
+													{"mDataProp" : "id"}, 
+													{"mDataProp" : "nome"}, 
+													{"mDataProp" : "unidadeMedida"}, 
+													{"mDataProp" : "preco"}, 
+													{"mDataProp" : "descricao"},
+													{"mDataProp" : "link"}
+													],									
+									
+									"oLanguage":{
+										    "sProcessing":   "Processando...",
+										    "sLengthMenu":   "Mostrar _MENU_ registros",
+										    "sZeroRecords":  "Não foram encontrados resultados",
+										    "sInfo":         "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+										    "sInfoEmpty":    "Mostrando de 0 até 0 de 0 registros",
+										    "sInfoFiltered": "(filtrado de _MAX_ registros no total)",
+										    "sInfoPostFix":  "",
+										    "sSearch":       "Buscar:",
+										    "sUrl":          "",
+										    "oPaginate": {
+										        "sFirst":    "Primeiro",
+										        "sPrevious": "Anterior",
+										        "sNext":     "Seguinte",
+										        "sLast":     "Último"
+										    }
+										}
+									
+								});
+		});
+</script>
+
+
+
+
+
+
+
+
+
+<title>Copytem</title>
+
+</head>
+<body class="theme-lightgrey">
+	<div id="navigation">
+		<div class="container-fluid">
+			<a href="#" id="brand">COPYTEM</a> <a href="#" class="toggle-nav"
+				rel="tooltip" data-placement="bottom" title="Toggle navigation"><i
+				class="icon-reorder"></i></a>
+			<ul class='main-nav'>
+				<li class='active'><a href="index-2.html"> <span>Painel</span>
+				</a></li>
+				<li><a href="#" data-toggle="dropdown" class='dropdown-toggle'>
+						<span>Ordem de Serviço</span> <span class="caret"></span>
+				</a>
+					<ul class="dropdown-menu">
+						<li><a href="<c:url value="/ordemServico/form"/>">Nova</a></li>
+						<li><a href="forms-wizard.html">Lista</a></li>
+					</ul></li>
+				<li><a href="#" data-toggle="dropdown" class='dropdown-toggle'>
+						<span>Cliente</span> <span class="caret"></span>
+				</a>
+					<ul class="dropdown-menu">
+						<li><a href="<c:url value="/cliente/form"/>">Novo</a></li>
+						<li><a href="<c:url value="/cliente/listall"/>">Lista</a></li>
+					</ul></li>
+				<li><a href="#" data-toggle="dropdown" class='dropdown-toggle'>
+						<span>Caixa</span> <span class="caret"></span>
+				</a>
+					<ul class="dropdown-menu">
+						<li><a href="tables-large.html">Sangria</a></li>
+						<li><a href="tables-large.html">Relatório</a></li>
+					</ul></li>
+				<li><a href="#" data-toggle="dropdown" class='dropdown-toggle'>
+						<span>Pagamento</span> <span class="caret"></span>
+				</a>
+					<ul class="dropdown-menu">
+						<li><a href="plugins-dragdrop.html">Novo</a></li>
+						<li><a href="tables-large.html">Relatório</a></li>
+
+					</ul></li>
+				<li><a href="#" data-toggle="dropdown" class='dropdown-toggle'>
+						<span>Produto</span> <span class="caret"></span>
+				</a>
+					<ul class="dropdown-menu">
+						<li><a href="<c:url value="/produto/form"/>">Adicionar</a></li>
+						<li><a href="<c:url value="/produto/listall"/>">Listar</a></li>
+					</ul></li>
+				<li><a href="#" data-toggle="dropdown" class='dropdown-toggle'>
+						<span>Funcionário</span> <span class="caret"></span>
+				</a>
+					<ul class="dropdown-menu">
+						<li><a href="<c:url value="/funcionario/form"/>">Novo</a></li>
+						<li><a href="<c:url value="/funcionario/listall"/>">Lista</a></li>
+					</ul></li>
+				<li><a href="#" data-toggle="dropdown" class='dropdown-toggle'>
+						<span>Configurações</span> <span class="caret"></span>
+				</a>
+					<ul class="dropdown-menu">
+						<li><a href="layouts-footer.html">Adicionar categoria de
+								produto</a></li>
+						<li><a href="layouts-footer.html">Lista</a></li>
+					</ul></li>
+			</ul>
+			<div class="user">
+				<div class="dropdown">
+					<a href="#" class='dropdown-toggle' data-toggle="dropdown">Patrick
+						Godinho <img src="img/demo/user-avatar.jpg" alt="">
+					</a>
+					<ul class="dropdown-menu pull-right">
+						<li><a href="more-userprofile.html">Editar usuário</a></li>
+						<li><a href="more-login.html">Sair</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
